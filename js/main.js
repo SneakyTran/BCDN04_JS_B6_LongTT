@@ -91,7 +91,7 @@ function calcTotal() {
             sum += Math.pow(x, i);
         }
     }
-    console.log(sum);
+    document.getElementById("txtTotal").innerHTML = sum;
 }
 document.getElementById("btnCalc").onclick = calcTotal;
 
@@ -140,3 +140,48 @@ function calcFactorial() {
     document.getElementById("txtTotalResult").innerHTML = total;
 }
 document.getElementById("btnCalcTotal").onclick = calcFactorial;
+
+//todo Hãy viết chương trình khi click vào button sẽ in ra 10 thẻ div.
+//todo Nếu div nào vị trí chẵn thì background màu đỏ và lẻ thì
+//todo background màu xanh.
+var count = 0;
+/**
+ * Khối 1:
+ * count
+ *
+ * Khối 2:
+ * while(count < 10)
+ *      newDivNode = document.createElement("div");
+ *      newDivNode.classList.add("myStyle");
+ *      Nếu(count%2 == 0)
+ *          newTextNode = document.createTextNode("Div chẵn: " + count);
+ *          newDivNode.style.backgroundColor = "red";
+ *      Ngược lại
+ *          newTextNode = document.createTextNode("Div lẻ: " + count);
+ *          newDivNode.style.backgroundColor = "blue";
+ *      newDivNode.appendChild(newTextNode);
+ *      document.getElementById("resultId").appendChild(newDivNode);
+ *      count++;
+ *
+ * Khối 3:
+ * 10 khối div chẵn lẻ
+ */
+function createDiv() {
+    var newDivNode;
+    var newTextNode;
+    while (count < 10) {
+        newDivNode = document.createElement("div");
+        newDivNode.classList.add("myStyle");
+        if (count % 2 == 0) {
+            newTextNode = document.createTextNode("Div chẵn: " + count);
+            newDivNode.style.backgroundColor = "red";
+        } else {
+            newTextNode = document.createTextNode("Div lẻ: " + count);
+            newDivNode.style.backgroundColor = "blue";
+        }
+        newDivNode.appendChild(newTextNode);
+        document.getElementById("resultId").appendChild(newDivNode);
+        count++;
+    }
+}
+document.getElementById("btnCreateDiv").onclick = createDiv;
